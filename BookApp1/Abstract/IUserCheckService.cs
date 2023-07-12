@@ -1,0 +1,14 @@
+﻿using BookApp1.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BookApp1.Abstract
+{
+    public interface IUserCheckService
+    {
+        bool CheckIfRealPerson(User user);
+    }
+}

@@ -35,6 +35,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,9 +47,16 @@
   <ItemGroup>
     <Compile Include="Abstract\IBookService.cs" />
     <Compile Include="Abstract\IEntity.cs" />
+    <Compile Include="Abstract\IUserCheckService.cs" />
     <Compile Include="Abstract\IUserService.cs" />
+    <Compile Include="Adapters\MernisServiceAdapter.cs" />
     <Compile Include="Concrete\BookManager.cs" />
     <Compile Include="Concrete\UserManager.cs" />
+    <Compile Include="Connected Services\MernisServiceAdapter\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Book.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Program.cs" />
@@ -55,7 +64,29 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Connected Services\MernisServiceAdapter\BookApp1.MernisServiceAdapter.TCKimlikNoDogrulaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\MernisServiceAdapter\kpspublic.wsdl" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\MernisServiceAdapter\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\MernisServiceAdapter\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\MernisServiceAdapter\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\MernisServiceAdapter\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

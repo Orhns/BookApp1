@@ -10,11 +10,25 @@ namespace BookApp1.Concrete
 {
     public class UserManager : IUserService
     {
+        IUserCheckService _userCheckService;
+        public UserManager(IUserCheckService userCheckService)
+        {
+            _userCheckService = userCheckService;
+        }
+
         List<User> _users = new List<User>();
         public void Add(User user)
         {
-            _users.Add(user);
-            Console.WriteLine("User added (" + user.FirstName + ")");
+            if (_userCheckService.CheckIfRealPerson(user))
+            {
+                _users.Add(user);
+                Console.WriteLine("User added (" + user.FirstName + ")");
+            }
+            else
+            {
+                throw new Exception("Not a valid person");
+            }
+            
         }
 
         public void Delete(User user)
